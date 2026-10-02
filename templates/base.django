@@ -1,0 +1,15 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Stenia{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/output.css' %}">
+</head>
+<body>
+  {% block content %}{% endblock %}
+  <script src="{% static 'js/vendor/all.min.js' %}"></script>
+  <script type="module" src="{% static 'js/base.js' %}"></script>
+</body>
+</html>
