@@ -1,5 +1,5 @@
 {% extends "base.django" %}
 {% load static %}
 {% block content %}
-  <h1>Telegram Setup</h1>
+  <h1>My Files</h1>
 {% endblock %}

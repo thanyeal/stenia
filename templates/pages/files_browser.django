@@ -1,5 +1,5 @@
 {% extends "base.django" %}
 {% load static %}
 {% block content %}
-  <button class="btn">Basecoat works</button>
+  <h1>File Browser</h1>
 {% endblock %}
