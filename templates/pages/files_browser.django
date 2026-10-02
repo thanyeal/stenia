@@ -1,4 +1,5 @@
 {% extends "base.django" %}
+{% load static %}
 {% block content %}
   <button class="btn">Basecoat works</button>
 {% endblock %}

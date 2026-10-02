@@ -2,9 +2,31 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block title %}Stenia{% endblock %}</title>
+  <!-- RESPO -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- SEO: Results and Browser tabs. -->
+  <title>stenia</title>
+  <meta name="description" content="stenia: Secured Telegram Enabled Network for Integrated Access">
+  <meta name="author" content="thanyeal">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#121212">
+  <link rel="canonical" href="https://github.com/thanyeal/stenia">
+  <!-- Open Graph: Soc Med. -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="stenia: Secured Telegram Enabled Network for Integrated Access">
+  <meta property="og:description" content="Explore stenia, content, logic, and functions.">
+  <meta property="og:url" content="https://github.com/thanyeal/stenia">
+  <meta property="og:image" content="https://thanyeal.github.io/stenia/static/img/favicon.ico">
+  <meta property="og:image:alt" content="stenia">
+  <meta property="og:site_name" content="stenia: Secured Telegram Enabled Network for Integrated Access">
+  <!-- Twitter/X SEO: large image card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="stenia: Secured Telegram Enabled Network for Integrated Access">
+  <meta name="twitter:description" content="Explore stenia, content, logic, and functions.">
+  <meta name="twitter:image" content="https://thanyeal.github.io/stenia/static/img/favicon.ico">
+  <link rel="icon" href="./assets/images/logo.ico" type="image/x-icon">
+  <!-- Portfolio  -->
   <link rel="stylesheet" href="{% static 'css/output.css' %}">
 </head>
 <body>

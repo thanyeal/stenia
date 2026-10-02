@@ -1,6 +1,6 @@
-# Stenia: Requirements
+# stenia: Requirements
 
-**Stenia** is a free, open-source, self-hosted file storage app that works like Google Drive. It runs on your own PC and uses Telegram as the cloud drive.
+**stenia** is a free, open-source, self-hosted file storage app that works like Google Drive. It runs on your own PC and uses Telegram as the cloud drive.
 Expansion: Secured Telegram Enabled Network for Integrated Access.
 
 ## Scope for the first build
@@ -14,16 +14,16 @@ Expansion: Secured Telegram Enabled Network for Integrated Access.
 
 ## Design principles
 
-- Stenia is a cloud drive, not a local mirror. It does not keep full local copies of files.
-- Stenia never deletes the user's local original files on its own.
+- stenia is a cloud drive, not a local mirror. It does not keep full local copies of files.
+- stenia never deletes the user's local original files on its own.
 - Sync is one-way (local to Telegram) at first. Two-way sync comes later.
-- The user logs in to Stenia first. Telegram and other provider credentials are entered only after login, in Settings, and stored encrypted on the local machine. They are never requested or shown before login and never committed to the repo.
+- The user logs in to stenia first. Telegram and other provider credentials are entered only after login, in Settings, and stored encrypted on the local machine. They are never requested or shown before login and never committed to the repo.
 - Keep a storage provider interface, so more providers can be added later without a rewrite. Telegram is the only provider for now.
 
 ## P1: Core (MVP)
 
 - First-run setup: Telegram login (phone, code, optional 2FA), create or choose a private channel, add a backup admin account to the channel
-- Login to the Stenia web app
+- Login to the stenia web app
 - Create folders
 - Upload files and folders (drag and drop, progress, resumable)
 - Upload queue with staging: a file is marked done only after the upload is verified by size and hash and its message ID is saved
@@ -87,7 +87,7 @@ Expansion: Secured Telegram Enabled Network for Integrated Access.
 - Files over Telegram's size limit (about 2GB, higher with Premium) are split into chunks and rejoined on download.
 - Back up the SQLite index to Telegram on a schedule, so the library can be rebuilt if the local file is lost.
 - Handle Telegram rate limits (FloodWait) with an upload queue and retries.
-- Use a dedicated Telegram account for Stenia, not a personal one.
+- Use a dedicated Telegram account for stenia, not a personal one.
 - Store `api_id`, `api_hash` and the session file locally only, encrypted. Add them to `.gitignore`, since the repo is open source.
 - Windows packaging: PyInstaller or Nuitka, Inno Setup installer, tray icon
 - Security: bind to `127.0.0.1` only, check the `Origin` header, use session tokens
