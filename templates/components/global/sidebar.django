@@ -1,0 +1,71 @@
+{% with current=request.resolver_match.url_name %}
+<aside class="sidebar" id="app_sidebar" data-side="left">
+  <nav aria-label="Sidebar navigation">
+    <header>
+      <a href="{% url 'dashboard' %}" class="flex items-center gap-2 px-2 py-1.5 text-sm font-semibold">
+        <span class="flex size-7 items-center justify-center rounded-full bg-primary text-primary-foreground">
+          {% include "components/shared/icon.django" with name="plus" class="size-4" %}
+        </span>
+        stenia
+      </a>
+      <form action="{% url 'files_browser' %}" method="get" role="search">
+        <div class="input-group">
+          {% include "components/shared/icon.django" with name="search" %}
+          <input type="search" name="q" id="sidebar_search" placeholder="Search..." aria-label="Search files">
+          <kbd class="kbd" data-align="end">/</kbd>
+        </div>
+      </form>
+    </header>
+
+    <section class="scrollbar">
+      <div role="group">
+        <ul>
+          <li><a href="{% url 'dashboard' %}" {% if current == 'dashboard' %}aria-current="page"{% endif %}>{% include "components/shared/icon.django" with name="house" %}<span>Dashboard</span></a></li>
+          <li><a href="{% url 'my_files' %}" {% if current == 'my_files' %}aria-current="page"{% endif %}>{% include "components/shared/icon.django" with name="folder" %}<span>My files</span></a></li>
+          <li><a href="{% url 'shared_with_me' %}" {% if current == 'shared_with_me' %}aria-current="page"{% endif %}>{% include "components/shared/icon.django" with name="users" %}<span>Shared with me</span></a></li>
+          <li><a href="{% url 'recent' %}" {% if current == 'recent' %}aria-current="page"{% endif %}>{% include "components/shared/icon.django" with name="history" %}<span>Recent</span></a></li>
+        </ul>
+      </div>
+
+      <div role="group">
+        <h3>Starred files</h3>
+        <ul>
+          {% for f in sidebar_starred %}
+          <li>
+            <a href="{% url 'files_browser' %}?q={{ f.name|urlencode }}">
+              {% include "components/shared/icon.django" with name="file" class=f.icon_class %}
+              <span class="truncate">{{ f.name }}</span>
+              {% include "components/shared/icon.django" with name="star" class="ml-auto size-3 fill-amber-400 text-amber-400" %}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div role="group">
+        <h3>File type</h3>
+        <ul>
+          {% for t in sidebar_types %}
+          <li>
+            <a href="{% url 'files_browser' %}?type={{ t.key }}">
+              <span class="size-2 shrink-0 rounded-full {{ t.color }}"></span>
+              <span>{{ t.label }}</span>
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </section>
+
+    <section class="flex-none">
+      <div role="group">
+        <ul>
+          <li><a href="{% url 'settings' %}" {% if current == 'settings' %}aria-current="page"{% endif %}>{% include "components/shared/icon.django" with name="settings" %}<span>Settings</span></a></li>
+          <li><a href="{% url 'recently_deleted' %}" {% if current == 'recently_deleted' %}aria-current="page"{% endif %}>{% include "components/shared/icon.django" with name="trash" %}<span>Recently deleted</span></a></li>
+          <li><a href="{% url 'integrations' %}" {% if current == 'integrations' %}aria-current="page"{% endif %}>{% include "components/shared/icon.django" with name="plug" %}<span>Integrations</span></a></li>
+        </ul>
+      </div>
+    </section>
+  </nav>
+</aside>
+{% endwith %} 

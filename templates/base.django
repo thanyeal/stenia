@@ -1,12 +1,12 @@
 {% load static %}
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <!-- RESPO -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- SEO: Results and Browser tabs. -->
-  <title>stenia</title>
+  <title>{% if page_title %}{{ page_title }} · {% endif %}stenia</title>
   <meta name="description" content="stenia: Secured Telegram Enabled Network for Integrated Access">
   <meta name="author" content="thanyeal">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -25,12 +25,34 @@
   <meta name="twitter:title" content="stenia: Secured Telegram Enabled Network for Integrated Access">
   <meta name="twitter:description" content="Explore stenia, content, logic, and functions.">
   <meta name="twitter:image" content="https://thanyeal.github.io/stenia/static/img/favicon.ico">
-  <link rel="icon" href="./assets/images/logo.ico" type="image/x-icon">
-  <!-- Portfolio  -->
+  <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+  <!-- Theme: apply saved/system mode before paint -->
+  <script>
+    (function () {
+      try {
+        var m = localStorage.getItem("themeMode");
+        var dark = m ? m === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.classList.toggle("dark", dark);
+      } catch (e) {}
+    })();
+  </script>
+  <!-- Fonts: Geist -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'css/output.css' %}">
 </head>
-<body>
-  {% block content %}{% endblock %}
+<body data-page="{% block page_id %}{% endblock %}">
+  {% include "components/global/sidebar.django" %}
+  <div class="flex min-h-svh flex-col">
+    {% include "components/global/header.django" %}
+    <main class="flex-1 p-4 md:p-6">
+      {% block content %}{% endblock %}
+    </main>
+    {% include "components/global/footer.django" %}
+  </div>
+  {% include "components/global/modal.django" %}
+  {% include "components/shared/toast.django" %}
   <script src="{% static 'js/vendor/all.min.js' %}"></script>
   <script type="module" src="{% static 'js/base.js' %}"></script>
 </body>

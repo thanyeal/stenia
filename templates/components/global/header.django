@@ -1,0 +1,28 @@
+<header class="sticky top-0 z-30 flex h-14 items-center gap-2 border-b bg-background/80 px-4 backdrop-blur md:px-6">
+  <button type="button" class="btn" data-variant="ghost" data-size="icon" data-sidebar-toggle aria-label="Toggle sidebar">
+    {% include "components/shared/icon.django" with name="menu" %}
+  </button>
+  <h1 class="text-sm font-medium">{{ page_title|default:"stenia" }}</h1>
+
+  <div class="ml-auto flex items-center gap-2">
+    <button type="button" class="btn" data-variant="outline" data-size="icon" aria-label="Notifications">
+      {% include "components/shared/icon.django" with name="bell" %}
+    </button>
+
+    <div class="dropdown-menu">
+      <button type="button" id="user-menu-trigger" class="avatar" aria-haspopup="menu" aria-controls="user-menu-menu" aria-expanded="false" aria-label="User menu">
+        <span>{{ request.user.username|default:"G"|slice:":1"|upper }}</span>
+      </button>
+      <div id="user-menu-popover" data-popover aria-hidden="true" data-align="end">
+        <div role="menu" id="user-menu-menu" aria-labelledby="user-menu-trigger">
+          <div role="menuitem" class="pointer-events-none text-xs text-muted-foreground">{{ request.user.username|default:"Guest" }}</div>
+          <hr role="separator">
+          <a role="menuitem" href="{% url 'profile' %}">{% include "components/shared/icon.django" with name="user" %}Profile</a>
+          <button type="button" role="menuitem" onclick="window.basecoat.theme.toggle()">{% include "components/shared/icon.django" with name="moon" %}Toggle theme</button>
+          <hr role="separator">
+          <a role="menuitem" href="#">{% include "components/shared/icon.django" with name="log-out" %}Log out</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
