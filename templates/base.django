@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- SEO: Results and Browser tabs. -->
-  <title>{% if page_title %}{{ page_title }} · {% endif %}stenia</title>
+  <title>{% if page_title %}{{ page_title }} - {% endif %}stenia</title>
   <meta name="description" content="stenia: Secured Telegram Enabled Network for Integrated Access">
   <meta name="author" content="thanyeal">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
